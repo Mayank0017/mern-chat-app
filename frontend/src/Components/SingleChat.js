@@ -14,7 +14,7 @@ import ScrollableChat from "./ScrollableChat";
 import io from "socket.io-client";
 import UpdateGroupChatModal from "./miscellaneous/UpdateGroupChatModal";
 import { ChatState } from "../Context/ChatProvider";
-const ENDPOINT = "https://mern-chat-7xvm.onrender.com/"; 
+const ENDPOINT = "https://mern-chat-7xvm.onrender.com"; 
 var socket, selectedChatCompare;
 
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {
