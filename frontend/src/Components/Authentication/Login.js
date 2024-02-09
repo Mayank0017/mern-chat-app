@@ -4,7 +4,8 @@ import {Button, FormControl, FormLabel, Input, InputGroup, InputRightElement, VS
 import axios from "../../http";
 import { useState } from "react";
 import { useHistory } from "react-router";
-import { ChatState } from "../Context/ChatProvider";
+import { ChatState } from "../../Context/ChatProvider";
+
 
 const Login = () => {
     const [show, setShow] = useState(false);
