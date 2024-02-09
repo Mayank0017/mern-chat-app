@@ -43,28 +43,48 @@ const registerUser = asyncHandler(async (req, res) => {
   });
   
 
-const authUser = asyncHandler(async function(req, res){
-    const {email, password} = req.body;
+  const authUser = asyncHandler(async (req, res) => {
+    const { email, password } = req.body;
+  
     const user = await User.findOne({ email });
-
-    if(user){
-        if(user.matchPassword(password)){
-            res.status(201).json({
-            _id: user._id,
-            name: user.name,
-            email: user.email,
-            pic: user.pic,
-            token: generateToken(user._id)
-        });
-        } else {
-            res.status(401);
-            throw new Error("Invalid password");
-        }
+  
+    if (user && (await user.matchPassword(password))) {
+      res.json({
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+        isAdmin: user.isAdmin,
+        pic: user.pic,
+        token: generateToken(user._id),
+      });
     } else {
-        res.status(401);
-        throw new Error("Invalid id or password");
+      res.status(401);
+      throw new Error("Invalid Email or Password");
     }
-});
+  });
+
+// const authUser = asyncHandler(async function(req, res){
+//     const {email, password} = req.body;
+//     const user = await User.findOne({ email });
+
+//     if(user){
+//         if(user.matchPassword(password)){
+//             res.status(201).json({
+//             _id: user._id,
+//             name: user.name,
+//             email: user.email,
+//             pic: user.pic,
+//             token: generateToken(user._id)
+//         });
+//         } else {
+//             res.status(401);
+//             throw new Error("Invalid password");
+//         }
+//     } else {
+//         res.status(401);
+//         throw new Error("Invalid id or password");
+//     }
+// });
 
 const allUsers = asyncHandler(async (req, res)=>{
     //finding the user by name or email either is fine

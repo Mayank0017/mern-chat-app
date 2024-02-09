@@ -7,7 +7,8 @@ import { useState } from "react";
 
 
 const Chatpage=()=> {
-    const {user}=ChatState();
+    const { user } = ChatState();
+
     const [fetchAgain,setFetchAgain]=useState(false);
 
     return (

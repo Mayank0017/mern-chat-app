@@ -20,9 +20,9 @@ app.use(bodyParser.json())
 app.use(express.json()); 
 app.use(cors());
 
-app.get("/", (req, res) => {
-  res.send("API Running!");
-});
+// app.get("/", (req, res) => {
+//   res.send("API Running!");
+// });
 
 
 const PORT = process.env.PORT || 5000;
